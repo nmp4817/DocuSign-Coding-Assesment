@@ -1,0 +1,6 @@
+Output: Removing PJs, shorts, t-shirt, sun visor, sandals, leaving house
+Output: Removing PJs, pants, socks, shirt, hat, jacket, boots, leaving house
+Output: Removing PJs, shorts, fail
+Output: Removing PJs, shorts, fail
+Output: Removing PJs, pants, socks, shirt, hat, jacket, fail
+Output: fail
