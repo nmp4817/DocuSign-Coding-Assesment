@@ -4,7 +4,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for outputting the results.
+ * 
+ * @author Nabil
+ *
+ */
+
 public class Output {
+	
+	/**
+	 * Output results on console.
+	 */
 	public static void printOnConsole() {
 		for( ArrayList<String> result: Rules.results ) {
 			String ans = "Output: ";
@@ -16,6 +27,11 @@ public class Output {
 		}
 	}
 	
+	/**
+	 * Output results in given output file.
+	 * @param outFilePath Output File path.
+	 * @throws IOException Might Throw IOException since uses BufferedREader.
+	 */
 	public static void writeInFile(String outFilePath) throws IOException {
 		String answers = "";
 		for( ArrayList<String> result: Rules.results ) {

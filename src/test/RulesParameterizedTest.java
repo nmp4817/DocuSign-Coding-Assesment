@@ -15,13 +15,26 @@ import org.junit.runners.Parameterized.Parameters;
 import main.Model;
 import main.Rules;
 
+/**
+ * Testing validateCommands() Method of Rules class. Used Parameterized Testing.
+ * @author Nabil
+ *
+ */
+
 @RunWith(Parameterized.class)
 @ExtendWith(ArrayListInputParameterResolver.class)
 class RulesParameterizedTest {
 	
+	/**
+	 * ArraayList of input commands and expected output results.
+	 */
 	private ArrayList<String[]> input;
 	private ArrayList<ArrayList<String>> output;
 	
+	/**
+	 * Constructor initializes input and expected output.
+	 * @param input ArrayList of input commands.
+	 */
 	public RulesParameterizedTest(ArrayList<String[]> input) {
 		this.input = input;
 		
@@ -103,6 +116,10 @@ class RulesParameterizedTest {
 		Model model = new Model();
 	}
 	
+	/**
+	 * Setting up input parameters to pass to validateCommand() Method.
+	 * @return ArrayList
+	 */
 	@Parameters
 	public static Collection<Object> testConditions() {
 		String[] input1 = {"HOT", "8", "6", "4", "2", "1", "7"};
@@ -123,9 +140,11 @@ class RulesParameterizedTest {
 		return Arrays.asList(expectedOutputs);
 	}
 	
-	
+	/**
+	 * Tests validateCommands() method of Rules class.
+	 */
 	@Test
-	public void testValidateCommands_success() {
+	public void testValidateCommands() {
 		Rules.validateCommands(input);
 		assertEquals(output,Rules.getResults());
 	}

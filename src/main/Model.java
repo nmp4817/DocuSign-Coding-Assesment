@@ -3,8 +3,16 @@ package main;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * This is Model class for Project. Contains Two HashMaps for HOT and COLD Temperature.
+ * @author Nabil
+ *
+ */
 public class Model {
+	/**
+	 * HOT_MAP is HashMap for HOT Temperature commands.
+	 * COLD_MAP is HashMap for COLD Temperature commands.
+	 */
 	static Map<Integer,String> HOT_MAP = new HashMap<Integer,String>();
 	static Map<Integer,String> COLD_MAP = new HashMap<Integer,String>();
 	

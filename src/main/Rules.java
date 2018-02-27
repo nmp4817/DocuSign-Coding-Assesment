@@ -4,11 +4,24 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This class implements all the rules to validate clothing commands.
+ * @author Nabil
+ *
+ */
 public class Rules {
 	
+	/**
+	 * ArrayList results stores results for all commands.
+	 * ArrayList result stores result for a single command.
+	 */
 	public static ArrayList<ArrayList<String>> results;
 	public static ArrayList<String> result,inputList;
 	
+	/**
+	 * ValidateCommands for clothing in different temperature. 
+	 * @param listOfCommandsArray ArrayList of commands String[] provided by Input class.
+	 */
 	public static void validateCommands(ArrayList<String[]> listOfCommandsArray) {
 		
 		results =  new ArrayList<ArrayList<String>>();
@@ -34,6 +47,10 @@ public class Rules {
 		}	
 	}
 	
+	/**
+	 * Checks all the rules related to HOT Temperature clothing.
+	 * @param commandsArray String[] of command.
+	 */
 	public static void checkForHOTTemperature(String[] commandsArray) {
 		
 		inputList.add(commandsArray[1]);
@@ -58,7 +75,11 @@ public class Rules {
 		results.add(result);
 	}
 	
-public static void checkForCOLDTemperature(String[] commandsArray) {
+	/**
+	 * Checks all the rules related to COLD Temperature clothing.
+	 * @param commandsArray String[] of command.
+	 */
+	public static void checkForCOLDTemperature(String[] commandsArray) {
 		
 		inputList.add(commandsArray[1]);
 		
@@ -80,7 +101,11 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		
 		results.add(result);
 	}
-		
+	
+	/**
+	 * Checks is the first command Removing Pajamas.
+	 * @return boolean
+	 */
 	public static boolean isPajamaOff() {
 		if ( !inputList.get(0).equals("8") ) {
 			result.add("fail");
@@ -90,6 +115,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Checks is there repetition of any clothing item.
+	 * @return boolean
+	 */
 	public static boolean isClothRepeatation() {
 		Set<String> se = new HashSet<String>(inputList);
 		if (se.size() < inputList.size()) {
@@ -99,6 +128,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return false;
 	}
 	
+	/**
+	 * Checks is Socks On. Used in HOT temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isSocksOn() {
 		if ( inputList.get(inputList.size() - 1).equals("3") ) {
 			result.add("fail");
@@ -107,6 +140,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return false;
 	}
 	
+	/**
+	 * Checks is Jacket On. Used in HOT temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isJacketOn() {
 		if ( inputList.get(inputList.size() - 1).equals("5") ) {
 			result.add("fail");
@@ -115,6 +152,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return false;
 	}
 	
+	/**
+	 * Checks is Pants On Before wearing shoes. Used in both HOT and COLD temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isPantsOnB4Footwear() {
 		if ( !inputList.contains("6")  ) {
 			result.add("fail");
@@ -123,6 +164,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Checks is Shirt On Before Headgear. Used in both HOT and COLD temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isShirtOnB4Headwear() {
 		if ( !inputList.contains("4")  ) {
 			result.add("fail");
@@ -131,6 +176,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Checks Shirt On Before Jacket. Used in COLD temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isShirtOnB4Jacket() {
 		if ( !inputList.contains("4")  ) {
 			result.add("fail");
@@ -139,6 +188,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Checks Socks On Before Shoes. Used in COLD temperature clothing validation.
+	 * @return boolean
+	 */
 	public static boolean isSocksOnB4Shoes() {
 		if ( !inputList.contains("3")  ) {
 			result.add("fail");
@@ -147,6 +200,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Checks before leaving house all clothing are On.
+	 * @return boolean
+	 */
 	public static boolean isAllClothingsOn() {
 		if ( inputList.size() != 6 && inputList.size() != 8 ) {
 			result.add("fail");
@@ -155,6 +212,10 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 		return true;
 	}
 	
+	/**
+	 * Return AraayList of Results.
+	 * @return ArrayList
+	 */
 	public static ArrayList<ArrayList<String>> getResults() {
 		if (Rules.results != null) {
 			 return Rules.results;

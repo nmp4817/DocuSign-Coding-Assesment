@@ -6,20 +6,39 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+/**
+ * This class accepts the user input and based on that it reads input from console or file, 
+ * parses the input and generate ArrayList of String[] of commands.
+ * 
+ * @author Nabil
+ * 
+ */
 public class Input {
 	
+	/**
+	 * InputStreamReader to read from keyboard.
+	 * FileReader to read from file.
+	 * inFilePath and outFilePath are path for input and output file respectively.
+	 */
 	InputStreamReader inReader;
 	BufferedReader cmdReader,fileReader;
 	FileReader fReader;
 	String inFilePath, outFilePath;
 	
+	/**
+	 * Creates InputStreamReader, BufferedReader Objects.Initializes Model for project.
+	 */
 	public Input() {
 		inReader = new InputStreamReader(System.in);
 		cmdReader = new BufferedReader(inReader);
 		Model model = new Model();		
 	}
 	
+	/**
+	 * Main Driver method. Asks user input continuously until user exits.
+	 * @param args Command Line Arguments.
+	 * @throws IOException Might Throw IOException since uses BufferedREader.
+	 */
 	public static void main(String[] args) throws IOException {
 		
 		ArrayList<String[]> listOfCommandsArray;
@@ -61,21 +80,25 @@ public class Input {
 		}
 	}
 	
+	/**
+	 * Reads Commands from console.
+	 * @return ArrayList
+	 * @throws IOException Might Throw IOException since uses BufferedREader.
+	 * 
+	 */
+	
 	public ArrayList<String[]> getCommandsViaCMD() throws IOException {
 		
-		ArrayList<String[]> listOfCommandsArray = new ArrayList<String[]>();
-		String line;
-		
-		while ((line = cmdReader.readLine()) != null) {
-			if (line.length() == 0) break;
-			if (line.matches("[a-zA-Z0-9, ]*"))
-				listOfCommandsArray.add(line.replaceAll(",","").split(" "));
-		}
-		
-		return listOfCommandsArray;
+		return parseCommands(cmdReader);
 	}
 	
-public ArrayList<String[]> getCommandsViaFile() throws IOException {
+	/**
+	 * Reads commands from file.
+	 * @return ArrayList
+	 * @throws IOException Might Throw IOException since uses BufferedREader
+	 *
+	 */
+	public ArrayList<String[]> getCommandsViaFile() throws IOException {
 
 		System.out.println("\nEnter path for input file:");
 		inFilePath = cmdReader.readLine().trim();
@@ -85,10 +108,21 @@ public ArrayList<String[]> getCommandsViaFile() throws IOException {
 		fReader = new FileReader(inFilePath);
 		fileReader = new BufferedReader(fReader);
 		
+		return parseCommands(fileReader);
+	}
+	
+	/**
+	 * Parses the commands read from console and file, and convert each them into separate String[]. 
+	 * @param brReader BufferedReader Reader class.
+	 * @return ArrayList
+	 * @throws IOException Might Throw IOException since uses BufferedREader.
+	 *  
+	 */
+	public ArrayList<String[]> parseCommands(BufferedReader brReader) throws IOException {
 		ArrayList<String[]> listOfCommandsArray = new ArrayList<String[]>();
 		String line;
 		
-		while ((line = fileReader.readLine()) != null) {
+		while ((line = brReader.readLine()) != null) {
 			if (line.length() == 0) break;
 			if (line.matches("[a-zA-Z0-9, ]*"))
 				listOfCommandsArray.add(line.replaceAll(",","").split(" "));

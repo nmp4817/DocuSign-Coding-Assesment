@@ -8,8 +8,16 @@ import org.junit.jupiter.api.Test;
 
 import main.Rules;
 
+/**
+ * Testing Methods of Rule class.
+ * @author Nabil
+ *
+ */
 class RulesTest {
 	
+	/**
+	 * Tests isPajamaOff() Method when Pajama is not removed.
+	 */
 	@Test
 	void testIsPajamaOff_False() {
 		Rules.results =  new ArrayList<ArrayList<String>>();
@@ -23,7 +31,10 @@ class RulesTest {
 		
 		assertFalse(Rules.isPajamaOff());
 	}
-
+	
+	/**
+	 * Tests isPajamaOff() Method when Pajama is removed.
+	 */
 	@Test
 	void testIsPajamaOff_True() {
 		Rules.result = new ArrayList<String>();
@@ -37,6 +48,9 @@ class RulesTest {
 		assertTrue(Rules.isPajamaOff());
 	}
 	
+	/**
+	 * Tests isSocksOn() Method when Socks are not On.
+	 */
 	@Test
 	void testIsSocksOn_False() {
 		Rules.result = new ArrayList<String>();
@@ -63,6 +77,9 @@ class RulesTest {
 		assertTrue(Rules.isSocksOn());
 	}
 	
+	/**
+	 * Tests isSocksOn() Method when Socks are On.
+	 */
 	@Test
 	void testIsJacketOn_False() {
 		Rules.result = new ArrayList<String>();
@@ -75,7 +92,10 @@ class RulesTest {
 		
 		assertFalse(Rules.isJacketOn());
 	}
-
+	
+	/**
+	 * Tests isJacketOn() Method when Jacket is On.
+	 */
 	@Test
 	void testIsJacketOn_True() {
 		Rules.result = new ArrayList<String>();
