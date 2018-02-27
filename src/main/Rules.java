@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class Rules {
 	
-	static ArrayList<ArrayList<String>> results;
-	static ArrayList<String> result,inputList;
+	public static ArrayList<ArrayList<String>> results;
+	public static ArrayList<String> result,inputList;
 	
 	public static void validateCommands(ArrayList<String[]> listOfCommandsArray) {
 		
@@ -153,5 +153,13 @@ public static void checkForCOLDTemperature(String[] commandsArray) {
 			return false;
 		}
 		return true;
+	}
+	
+	public static ArrayList<ArrayList<String>> getResults() {
+		if (Rules.results != null) {
+			 return Rules.results;
+		} else {
+			return new ArrayList<ArrayList<String>>();
+		}
 	}
 }

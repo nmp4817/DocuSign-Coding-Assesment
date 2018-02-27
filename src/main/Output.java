@@ -16,7 +16,7 @@ public class Output {
 		}
 	}
 	
-	public static void writeInFile() throws IOException {
+	public static void writeInFile(String outFilePath) throws IOException {
 		String answers = "";
 		for( ArrayList<String> result: Rules.results ) {
 			String ans = "Output: ";
@@ -27,7 +27,7 @@ public class Output {
 			answers += ans.substring(0,ans.length()-2)+"\n";
 		}
 		
-		FileWriter fWriter = new FileWriter(Input.outFilePath);
+		FileWriter fWriter = new FileWriter(outFilePath);
 		fWriter.write(answers); 
 		fWriter.flush();
 		fWriter.close();
